@@ -46,6 +46,13 @@ function playDrum(letter) {
   }
 }
 
+function animateButton(drumKey){
+  var currentButton = document.querySelector("." + drumKey);
+  currentButton.classList.add("pressed");
+  setTimeout(function(){
+    currentButton.classList.remove("pressed");
+  }, 1000);
+}
 
 
 
@@ -53,6 +60,7 @@ for (i = 0; i < buttonList.length; i++) {
 
   buttonList[i].addEventListener("click", function() {
     playDrum(this.innerHTML);
+    animateButton(this.innerHTML);
   });
 }
 
@@ -60,4 +68,5 @@ for (i = 0; i < buttonList.length; i++) {
 document.addEventListener("keydown", function(e){
   console.log(e);
   playDrum(e.key);
+  animateButton(e.key);
 });
